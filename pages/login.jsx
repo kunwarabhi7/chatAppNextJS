@@ -1,9 +1,26 @@
 import React, { useState } from 'react';
 import {FcGoogle} from 'react-icons/fc'
-const Login = () => {
+import {auth,provider} from '../utils/firebase'
+import {signInWithPopup} from 'firebase/auth'
+import Router from 'next/router';
+
+const Login = async() => {
+   const router =  Router()
   const handleGoogleLogin = () => {
+    try{
+        signInWithPopup(auth,provider).then((res)=>{
+            console.log(res)
+            router.push('/')
+        })
+    }catch(err){
+        console.error(err)
+    }
+
+
     console.log('Login with Google');
   };
+
+
 
   return (
     <div className="flex items-center justify-center h-screen">

@@ -1,25 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {FcGoogle} from 'react-icons/fc'
 import {auth,provider} from '../utils/firebase'
 import {signInWithPopup} from 'firebase/auth'
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 
-const Login = async() => {
-   const router =  Router()
-  const handleGoogleLogin = () => {
+const Login = () => {
+   const router =  useRouter()
+
+   const handleGoogleLogin =async () => {
     try{
-        signInWithPopup(auth,provider).then((res)=>{
+     await  signInWithPopup(auth,provider).then((res)=>{
             console.log(res)
             router.push('/')
         })
     }catch(err){
         console.error(err)
     }
-
-
-    console.log('Login with Google');
   };
-
 
 
   return (

@@ -2,18 +2,16 @@ import React from 'react';
 import {FcGoogle} from 'react-icons/fc'
 import {auth,provider} from '../utils/firebase'
 import {signInWithPopup} from 'firebase/auth'
-import Cookies from 'universal-cookie';
- 
-const cookies = new Cookies();
+import { useRouter } from 'next/router';
 
-const Auth = () => {
+const Login = () => {
+   const router =  useRouter()
 
    const handleGoogleLogin =async () => {
     try{
      await  signInWithPopup(auth,provider).then((res)=>{
             console.log(res)
-            cookies.set('Auth-Token',res.user.refreshToken)
-            
+            router.push('/')
         })
     }catch(err){
         console.error(err)
@@ -47,4 +45,4 @@ const Auth = () => {
   );
 };
 
-export default Auth;
+export default Login;

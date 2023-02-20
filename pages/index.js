@@ -7,6 +7,7 @@ import {auth} from '../utils/firebase'
 export default function Home() {
   const [user] = useAuthState(auth);
 const [chatRoom, setChatRoom] = useState(null)
+
   if(!user) return <Login />
  
  
@@ -21,7 +22,7 @@ const [chatRoom, setChatRoom] = useState(null)
 </button>
      </div>
           {chatRoom ? "Chat" : (
-            <ChatInput chatRoom={chatRoom} setChatRoom={setChatRoom} />
+            <ChatInput setChatRoom={setChatRoom}  />
           )}
     </>
   )

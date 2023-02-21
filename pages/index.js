@@ -31,7 +31,7 @@ const SignOut = () => {
   </span>
 </button>
      </div>
-          {<Chat /> ? "Chat" : (
+          {Chat  ? <Chat /> : (
             <ChatInput setChatRoom={setChatRoom}  />
           )}
     </>

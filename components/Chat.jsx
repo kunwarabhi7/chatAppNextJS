@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { doc, setDoc ,collection, addDoc, serverTimestamp, query, where, onSnapshot} from "firebase/firestore"; 
+import {collection, addDoc, serverTimestamp, query, where, onSnapshot, orderBy} from "firebase/firestore"; 
 import { auth, db } from '@/utils/firebase';
 
 
@@ -9,7 +9,7 @@ const Chat = ({chatRoom}) => {
 const docRef = collection(db,'messages')    
 
 useEffect(()=>{
-const queryMessages   = query(docRef,where('chatRoom' ,'==',chatRoom))
+const queryMessages   = query(docRef,where('chatRoom' ,'==',chatRoom ), orderBy("createdAt"));
 onSnapshot(queryMessages,(snapShot)=>{
     let messages = [];
     snapShot.forEach((doc)=>{

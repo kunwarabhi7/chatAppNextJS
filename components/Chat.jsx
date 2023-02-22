@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {collection, addDoc, serverTimestamp, query, where, onSnapshot, orderBy} from "firebase/firestore"; 
 import { auth, db } from '@/utils/firebase';
-import MessageUI from './MessageUI';
+import ChatUI from './ChatUI';
 
 
 const Chat = ({chatRoom}) => {
@@ -42,7 +42,7 @@ setMessageText('')
         </div>
 {messages.map((message)=>{
  return  <div key={message.id}>
-    <MessageUI userId={message.userId}  messageText={message.messageText} name={message.name} createdAt={message?.createdAt?.toDate().toLocaleTimeString('en-US')} />
+    <ChatUI userId={message.userId}  messageText={message.messageText} name={message.name} createdAt={message?.createdAt?.toDate().toLocaleTimeString('en-US')} />
     </div>
 })}
     <div className="bg-grey-lighter px-4 py-4   flex items-center">

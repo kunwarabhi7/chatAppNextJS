@@ -4,7 +4,7 @@ import React from 'react'
 const MessageUI = ({messageText,name ,userId, createdAt}) => {
  
   return (
-<div className=''>
+<div className='m-2'>
 {userId === auth.currentUser.uid ? 
   <>
   <div className='flex   items-center justify-end'>

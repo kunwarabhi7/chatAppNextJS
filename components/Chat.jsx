@@ -28,7 +28,8 @@ await addDoc(docRef,{
     messageText,
     createdAt : serverTimestamp() ,
     name: auth.currentUser.displayName,
-    chatRoom
+    chatRoom,
+    userId :  auth.currentUser.uid
 })
 setMessageText('')
 } 

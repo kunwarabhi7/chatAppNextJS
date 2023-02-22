@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {collection, addDoc, serverTimestamp, query, where, onSnapshot, orderBy} from "firebase/firestore"; 
 import { auth, db } from '@/utils/firebase';
-import MessageUI from './MessageUI';
+import MessageUI from './MessageUi';
 
 
 const Chat = ({chatRoom}) => {

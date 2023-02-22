@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {collection, addDoc, serverTimestamp, query, where, onSnapshot, orderBy} from "firebase/firestore"; 
 import { auth, db } from '@/utils/firebase';
+import MessageUI from './MessageUI';
 
 
 const Chat = ({chatRoom}) => {
@@ -33,9 +34,15 @@ setMessageText('')
 } 
  
     return (
-    <div>
+    <div className=''>
+        <div className='text-4xl text-center text-cyan-500 '>
+
+        Welcome To : {chatRoom.toUpperCase()}
+        </div>
 {messages.map((message)=>{
-   return <div>{message.messageText}</div>
+ return  <div key={message.id}>
+    <MessageUI chatRoom={message.chatRoom}  messageText={message.messageText} name={message.name} createdAt={message?.createdAt?.toDate().toLocaleTimeString('en-US')} />
+    </div>
 })}
     <div className="bg-grey-lighter px-4 py-4   flex items-center">
                             <div>
@@ -44,7 +51,7 @@ setMessageText('')
                             <div className="flex-1 mx-4">
                                 <form onSubmit={submitForm}>
 
-                                <input onChange={e=>setMessageText(e.target.value)}  value={messageText} class="w-full border rounded px-2 py-2" className='bg-white text-gray-900' type="text"/>
+                                <input onChange={e=>setMessageText(e.target.value)}  value={messageText} class="w-full border rounded px-2 py-2" className='bg-white w-full text-gray-900' type="text"/>
                             <button type='submit' className='hidden'>Send</button>
                                 </form>
                             </div>

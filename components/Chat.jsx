@@ -52,7 +52,7 @@ setMessageText('')
                             <div className="flex-1 mx-4">
                                 <form onSubmit={submitForm}>
 
-                                <input onChange={e=>setMessageText(e.target.value)}  value={messageText} class="" className='bg-white w-full text-gray-900  border rounded px-2 py-2' type="text"/>
+                                <input onChange={e=>setMessageText(e.target.value)}  value={messageText}  className='bg-white w-full text-gray-900  border rounded px-2 py-2' type="text"/>
                             <button type='submit' className='hidden'>Send</button>
                                 </form>
                             </div>
